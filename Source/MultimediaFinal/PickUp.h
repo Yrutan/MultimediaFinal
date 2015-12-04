@@ -21,5 +21,12 @@ public:
 	virtual void Tick( float DeltaSeconds ) override;
 
 	
-	
+   /** Sphere de contact */
+   UPROPERTY(VisibleDefaultsOnly, Category = "SourceEnergie")
+   class USphereComponent* SphereContact;
+
+   /** VitesseRotation */
+   UPROPERTY(EditDefaultsOnly, Category = "SourceEnergie")
+      float VitesseRotation;
+
 };

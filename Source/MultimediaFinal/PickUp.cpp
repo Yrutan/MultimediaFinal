@@ -7,6 +7,13 @@
 // Sets default values
 APickUp::APickUp()
 {
+
+   SphereContact = CreateDefaultSubobject<USphereComponent>(TEXT("SphereContactComponent"));
+   SphereContact->SetSphereRadius(20.f, false);
+   RootComponent = SphereContact;
+
+   VitesseRotation = 180.f; // 180 degrés par seconde
+
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
@@ -23,6 +30,10 @@ void APickUp::BeginPlay()
 void APickUp::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
+
+   FRotator rotation = GetActorRotation();
+   rotation.Roll += VitesseRotation * DeltaTime;
+   SetActorRotation(rotation);
 
 }
 
